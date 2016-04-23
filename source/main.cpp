@@ -4884,13 +4884,10 @@ void deinit()
 //--
 
 //SOUNDS
-//    for (int i = 1; i < 6; i++)
-//	Mix_FreeMusic(otom[i]);
-//    for (int i = 1; i < 19; i++)
-//	Mix_FreeChunk(oto[i]);
-//--
+	stopSFX();
+	stopMSC();
 	exitSound();
-
+//--
 
 //Font
 //    for (int i = 0; i < FONT_MAX; i++)
