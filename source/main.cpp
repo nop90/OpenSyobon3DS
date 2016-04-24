@@ -28,7 +28,7 @@ int main(void)
 
 	int tempread=0;
 	FILE* f;
-	f = fopen("/syobon/OpenSyobon3DS.sav", "r");
+	f = fopen("/3ds/OpenSyobon3DS/save.sav", "r");
 	if (f!=NULL) {
 		if (fscanf(f,"%d",&tempread) == 1)
 			if (tempread >0 && tempread <9) unlockedlevel = tempread;
@@ -1163,7 +1163,7 @@ void rpaint()
 		if (unlockedlevel < (sta-1)*4+stb-1) {;
 			unlockedlevel = (sta-1)*4+stb-1;
 			FILE *f;
-			f = fopen("/syobon/OpenSyobon3DS.sav", "w+");
+			f = fopen("/3ds/OpenSyobon3DS/save.sav", "w+");
 			fprintf(f, "%d", unlockedlevel);
 			fclose(f);
 
@@ -4903,6 +4903,7 @@ void deinit()
 //    Mix_Quit();
 //    SDL_Quit();
 
+	romfsExit();
     sftd_fini();
 	sf2d_fini();
 

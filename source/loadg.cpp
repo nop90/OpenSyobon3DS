@@ -28,28 +28,28 @@ void loadg(void)
 //SetTransColor( 9*16+9 , 255 , 255 ) ;
 
 //プレイヤー
-    mgrap[0] = LoadGraph("/syobon/res/player.PNG");
+    mgrap[0] = LoadGraph("romfs:/res/player.PNG");
 //ブロック
-    mgrap[1] = LoadGraph("/syobon/res/brock.PNG");
+    mgrap[1] = LoadGraph("romfs:/res/brock.PNG");
 //アイテム
-    mgrap[2] = LoadGraph("/syobon/res/item.PNG");
+    mgrap[2] = LoadGraph("romfs:/res/item.PNG");
 //敵
-    mgrap[3] = LoadGraph("/syobon/res/teki.PNG");
+    mgrap[3] = LoadGraph("romfs:/res/teki.PNG");
 //背景
-    mgrap[4] = LoadGraph("/syobon/res/haikei.PNG");
+    mgrap[4] = LoadGraph("romfs:/res/haikei.PNG");
 //ブロック2
-    mgrap[5] = LoadGraph("/syobon/res/brock2.PNG");
+    mgrap[5] = LoadGraph("romfs:/res/brock2.PNG");
 //おまけ
-    mgrap[6] = LoadGraph("/syobon/res/omake.PNG");
+    mgrap[6] = LoadGraph("romfs:/res/omake.PNG");
 //おまけ2
-   mgrap[7] = LoadGraph("/syobon/res/omake2.PNG");
+   mgrap[7] = LoadGraph("romfs:/res/omake2.PNG");
 //タイトル
-    mgrap[30] = LoadGraph("/syobon/res/syobon3.PNG");
+    mgrap[30] = LoadGraph("romfs:/res/syobon3.PNG");
 
 // level icons
-   mgrap[8] = LoadGraph("/syobon/res/levels.PNG");
+   mgrap[8] = LoadGraph("romfs:/res/Levels.png");
 //Background
-   mgrap[9] = LoadGraph("/syobon/res/background.PNG");
+   mgrap[9] = LoadGraph("romfs:/res/Background.png");
 
 //プレイヤー読み込み
     grap[40][0] = DerivationGraph(0, 0, 30, 36, mgrap[0]);
@@ -210,32 +210,32 @@ anx[3]=30;any[3]=44;
 //ogg読み込み
 //try{
 //oto[2] = LoadSoundMem( "SE/1.mp3" ) ;
-    otom[1] = LoadMusicMem("/syobon/BGM/field.ogg"); //50
-    otom[2] = LoadMusicMem("/syobon/BGM/dungeon.ogg"); //40
-    otom[3] = LoadMusicMem("/syobon/BGM/star4.ogg"); //50
-    otom[4] = LoadMusicMem("/syobon/BGM/castle.ogg"); //50
-    otom[5] = LoadMusicMem("/syobon/BGM/puyo.ogg"); //50
-//otom[6]=LoadMusicMem( "/syobon/BGM/last.ogg");
+    otom[1] = LoadMusicMem("romfs:/BGM/field.ogg"); //50
+    otom[2] = LoadMusicMem("romfs:/BGM/dungeon.ogg"); //40
+    otom[3] = LoadMusicMem("romfs:/BGM/star4.ogg"); //50
+    otom[4] = LoadMusicMem("romfs:/BGM/castle.ogg"); //50
+    otom[5] = LoadMusicMem("romfs:/BGM/puyo.ogg"); //50
+//otom[6]=LoadMusicMem( "romfs:/BGM/last.ogg");
 //ChangeVolumeSoundMem(50, otom[6]);
 
-    oto[1] = LoadSoundMem("/syobon/SE/jump.ogg");
-//oto[2] = LoadSoundMem("/syobon/SE/brockcoin.ogg");
-    oto[3] = LoadSoundMem("/syobon/SE/brockbreak.ogg");
-    oto[4] = LoadSoundMem("/syobon/SE/coin.ogg");
-    oto[5] = LoadSoundMem("/syobon/SE/humi.ogg");
-    oto[6] = LoadSoundMem("/syobon/SE/koura.ogg");
-    oto[7] = LoadSoundMem("/syobon/SE/dokan.ogg");
-    oto[8] = LoadSoundMem("/syobon/SE/brockkinoko.ogg");
-    oto[9] = LoadSoundMem("/syobon/SE/powerup.ogg");
-    oto[10] = LoadSoundMem("/syobon/SE/kirra.ogg");
-    oto[11] = LoadSoundMem("/syobon/SE/goal.ogg");
-    oto[12] = LoadSoundMem("/syobon/SE/death.ogg");
-    oto[13] = LoadSoundMem("/syobon/SE/Pswitch.ogg");
-    oto[14] = LoadSoundMem("/syobon/SE/jumpBlock.ogg");
-    oto[15] = LoadSoundMem("/syobon/SE/hintBlock.ogg");
-    oto[16] = LoadSoundMem("/syobon/SE/4-clear.ogg");
-    oto[17] = LoadSoundMem("/syobon/SE/allclear.ogg");
-    oto[18] = LoadSoundMem("/syobon/SE/tekifire.ogg");
+    oto[1] = LoadSoundMem("romfs:/SE/jump.ogg");
+//oto[2] = LoadSoundMem("romfs:/SE/brockcoin.ogg");
+    oto[3] = LoadSoundMem("romfs:/SE/brockbreak.ogg");
+    oto[4] = LoadSoundMem("romfs:/SE/coin.ogg");
+    oto[5] = LoadSoundMem("romfs:/SE/humi.ogg");
+    oto[6] = LoadSoundMem("romfs:/SE/koura.ogg");
+    oto[7] = LoadSoundMem("romfs:/SE/dokan.ogg");
+    oto[8] = LoadSoundMem("romfs:/SE/brockkinoko.ogg");
+    oto[9] = LoadSoundMem("romfs:/SE/powerup.ogg");
+    oto[10] = LoadSoundMem("romfs:/SE/kirra.ogg");
+    oto[11] = LoadSoundMem("romfs:/SE/goal.ogg");
+    oto[12] = LoadSoundMem("romfs:/SE/death.ogg");
+    oto[13] = LoadSoundMem("romfs:/SE/Pswitch.ogg");
+    oto[14] = LoadSoundMem("romfs:/SE/jumpBlock.ogg");
+    oto[15] = LoadSoundMem("romfs:/SE/hintBlock.ogg");
+    oto[16] = LoadSoundMem("romfs:/SE/4-clear.ogg");
+    oto[17] = LoadSoundMem("romfs:/SE/allclear.ogg");
+    oto[18] = LoadSoundMem("romfs:/SE/tekifire.ogg");
 
 */
 
@@ -248,32 +248,32 @@ anx[3]=30;any[3]=44;
 
 
 
-    otom[1] = createSFX("/syobon/BGM/field.raw",SOUND_FORMAT_16BIT); 
-    otom[2] = createSFX("/syobon/BGM/dungeon.raw",SOUND_FORMAT_16BIT); 
-    otom[3] = createSFX("/syobon/BGM/star4.raw",SOUND_FORMAT_16BIT); 
-    otom[4] = createSFX("/syobon/BGM/castle.raw",SOUND_FORMAT_16BIT);
-    otom[5] = createSFX("/syobon/BGM/puyo.raw",SOUND_FORMAT_16BIT); 
+    otom[1] = createSFX("romfs:/BGM/field.raw",SOUND_FORMAT_16BIT); 
+    otom[2] = createSFX("romfs:/BGM/dungeon.raw",SOUND_FORMAT_16BIT); 
+    otom[3] = createSFX("romfs:/BGM/star4.raw",SOUND_FORMAT_16BIT); 
+    otom[4] = createSFX("romfs:/BGM/castle.raw",SOUND_FORMAT_16BIT);
+    otom[5] = createSFX("romfs:/BGM/puyo.raw",SOUND_FORMAT_16BIT); 
 
-// //otom[6]=LoadMusicMem( "/syobon/BGM/last.raw",SOUND_FORMAT_16BIT);
+// //otom[6]=LoadMusicMem( "romfs:/BGM/last.raw",SOUND_FORMAT_16BIT);
 
-    oto[1] = createSFX("/syobon/SE/jump.raw",SOUND_FORMAT_16BIT);
-// //oto[2] = LoadSoundMem("/syobon/SE/brockcoin.raw",SOUND_FORMAT_16BIT);
-    oto[3] = createSFX("/syobon/SE/brockbreak.raw",SOUND_FORMAT_16BIT);
-    oto[4] = createSFX("/syobon/SE/coin.raw",SOUND_FORMAT_16BIT);
-    oto[5] = createSFX("/syobon/SE/humi.raw",SOUND_FORMAT_16BIT);
-    oto[6] = createSFX("/syobon/SE/koura.raw",SOUND_FORMAT_16BIT);
-    oto[7] = createSFX("/syobon/SE/dokan.raw",SOUND_FORMAT_16BIT);
-    oto[8] = createSFX("/syobon/SE/brockkinoko.raw",SOUND_FORMAT_16BIT);
-    oto[9] = createSFX("/syobon/SE/powerup.raw",SOUND_FORMAT_16BIT);
-    oto[10] = createSFX("/syobon/SE/kirra.raw",SOUND_FORMAT_16BIT);
-    oto[11] = createSFX("/syobon/SE/goal.raw",SOUND_FORMAT_16BIT);
-    oto[12] = createSFX("/syobon/SE/death.raw",SOUND_FORMAT_16BIT);
-    oto[13] = createSFX("/syobon/SE/Pswitch.raw",SOUND_FORMAT_16BIT);
-    oto[14] = createSFX("/syobon/SE/jumpBlock.raw",SOUND_FORMAT_16BIT);
-    oto[15] = createSFX("/syobon/SE/hintBlock.raw",SOUND_FORMAT_16BIT);
-    oto[16] = createSFX("/syobon/SE/4-clear.raw",SOUND_FORMAT_16BIT);
-    oto[17] = createSFX("/syobon/SE/allclear.raw",SOUND_FORMAT_16BIT);
-    oto[18] = createSFX("/syobon/SE/tekifire.raw",SOUND_FORMAT_16BIT);
+    oto[1] = createSFX("romfs:/SE/jump.raw",SOUND_FORMAT_16BIT);
+// //oto[2] = LoadSoundMem("romfs:/SE/brockcoin.raw",SOUND_FORMAT_16BIT);
+    oto[3] = createSFX("romfs:/SE/brockbreak.raw",SOUND_FORMAT_16BIT);
+    oto[4] = createSFX("romfs:/SE/coin.raw",SOUND_FORMAT_16BIT);
+    oto[5] = createSFX("romfs:/SE/humi.raw",SOUND_FORMAT_16BIT);
+    oto[6] = createSFX("romfs:/SE/koura.raw",SOUND_FORMAT_16BIT);
+    oto[7] = createSFX("romfs:/SE/dokan.raw",SOUND_FORMAT_16BIT);
+    oto[8] = createSFX("romfs:/SE/brockkinoko.raw",SOUND_FORMAT_16BIT);
+    oto[9] = createSFX("romfs:/SE/powerup.raw",SOUND_FORMAT_16BIT);
+    oto[10] = createSFX("romfs:/SE/kirra.raw",SOUND_FORMAT_16BIT);
+    oto[11] = createSFX("romfs:/SE/goal.raw",SOUND_FORMAT_16BIT);
+    oto[12] = createSFX("romfs:/SE/death.raw",SOUND_FORMAT_16BIT);
+    oto[13] = createSFX("romfs:/SE/Pswitch.raw",SOUND_FORMAT_16BIT);
+    oto[14] = createSFX("romfs:/SE/jumpBlock.raw",SOUND_FORMAT_16BIT);
+    oto[15] = createSFX("romfs:/SE/hintBlock.raw",SOUND_FORMAT_16BIT);
+    oto[16] = createSFX("romfs:/SE/4clear.raw",SOUND_FORMAT_16BIT);
+    oto[17] = createSFX("romfs:/SE/allclear.raw",SOUND_FORMAT_16BIT);
+    oto[18] = createSFX("romfs:/SE/tekifire.raw",SOUND_FORMAT_16BIT);
 
 
 
