@@ -29,23 +29,31 @@ void loadg(void)
 
 //プレイヤー
     mgrap[0] = LoadGraph("/syobon/res/player.PNG");
+	sf2d_texture_set_params(mgrap[0], GPU_TEXTURE_MAG_FILTER(GPU_LINEAR) | GPU_TEXTURE_MIN_FILTER(GPU_LINEAR)); 
 //ブロック
     mgrap[1] = LoadGraph("/syobon/res/brock.PNG");
+	sf2d_texture_set_params(mgrap[1], GPU_TEXTURE_MAG_FILTER(GPU_LINEAR) | GPU_TEXTURE_MIN_FILTER(GPU_LINEAR)); 
 //アイテム
     mgrap[2] = LoadGraph("/syobon/res/item.PNG");
+	sf2d_texture_set_params(mgrap[2], GPU_TEXTURE_MAG_FILTER(GPU_LINEAR) | GPU_TEXTURE_MIN_FILTER(GPU_LINEAR)); 
 //敵
     mgrap[3] = LoadGraph("/syobon/res/teki.PNG");
+	sf2d_texture_set_params(mgrap[3], GPU_TEXTURE_MAG_FILTER(GPU_LINEAR) | GPU_TEXTURE_MIN_FILTER(GPU_LINEAR)); 
 //背景
     mgrap[4] = LoadGraph("/syobon/res/haikei.PNG");
+	sf2d_texture_set_params(mgrap[4], GPU_TEXTURE_MAG_FILTER(GPU_LINEAR) | GPU_TEXTURE_MIN_FILTER(GPU_LINEAR)); 
 //ブロック2
     mgrap[5] = LoadGraph("/syobon/res/brock2.PNG");
+	sf2d_texture_set_params(mgrap[5], GPU_TEXTURE_MAG_FILTER(GPU_LINEAR) | GPU_TEXTURE_MIN_FILTER(GPU_LINEAR)); 
 //おまけ
     mgrap[6] = LoadGraph("/syobon/res/omake.PNG");
+	sf2d_texture_set_params(mgrap[6], GPU_TEXTURE_MAG_FILTER(GPU_LINEAR) | GPU_TEXTURE_MIN_FILTER(GPU_LINEAR)); 
 //おまけ2
    mgrap[7] = LoadGraph("/syobon/res/omake2.PNG");
+	sf2d_texture_set_params(mgrap[7], GPU_TEXTURE_MAG_FILTER(GPU_LINEAR) | GPU_TEXTURE_MIN_FILTER(GPU_LINEAR)); 
 //タイトル
     mgrap[30] = LoadGraph("/syobon/res/syobon3.PNG");
-
+	sf2d_texture_set_params(mgrap[30], GPU_TEXTURE_MAG_FILTER(GPU_LINEAR) | GPU_TEXTURE_MIN_FILTER(GPU_LINEAR)); 
 // level icons
    mgrap[8] = LoadGraph("/syobon/res/levels.PNG");
 //Background
@@ -204,40 +212,6 @@ anx[2]=30;any[2]=30;
 anx[3]=30;any[3]=44;
 */
 
-
-/*
-
-//ogg読み込み
-//try{
-//oto[2] = LoadSoundMem( "SE/1.mp3" ) ;
-    otom[1] = LoadMusicMem("/syobon/BGM/field.ogg"); //50
-    otom[2] = LoadMusicMem("/syobon/BGM/dungeon.ogg"); //40
-    otom[3] = LoadMusicMem("/syobon/BGM/star4.ogg"); //50
-    otom[4] = LoadMusicMem("/syobon/BGM/castle.ogg"); //50
-    otom[5] = LoadMusicMem("/syobon/BGM/puyo.ogg"); //50
-//otom[6]=LoadMusicMem( "/syobon/BGM/last.ogg");
-//ChangeVolumeSoundMem(50, otom[6]);
-
-    oto[1] = LoadSoundMem("/syobon/SE/jump.ogg");
-//oto[2] = LoadSoundMem("/syobon/SE/brockcoin.ogg");
-    oto[3] = LoadSoundMem("/syobon/SE/brockbreak.ogg");
-    oto[4] = LoadSoundMem("/syobon/SE/coin.ogg");
-    oto[5] = LoadSoundMem("/syobon/SE/humi.ogg");
-    oto[6] = LoadSoundMem("/syobon/SE/koura.ogg");
-    oto[7] = LoadSoundMem("/syobon/SE/dokan.ogg");
-    oto[8] = LoadSoundMem("/syobon/SE/brockkinoko.ogg");
-    oto[9] = LoadSoundMem("/syobon/SE/powerup.ogg");
-    oto[10] = LoadSoundMem("/syobon/SE/kirra.ogg");
-    oto[11] = LoadSoundMem("/syobon/SE/goal.ogg");
-    oto[12] = LoadSoundMem("/syobon/SE/death.ogg");
-    oto[13] = LoadSoundMem("/syobon/SE/Pswitch.ogg");
-    oto[14] = LoadSoundMem("/syobon/SE/jumpBlock.ogg");
-    oto[15] = LoadSoundMem("/syobon/SE/hintBlock.ogg");
-    oto[16] = LoadSoundMem("/syobon/SE/4-clear.ogg");
-    oto[17] = LoadSoundMem("/syobon/SE/allclear.ogg");
-    oto[18] = LoadSoundMem("/syobon/SE/tekifire.ogg");
-
-*/
 
    for (t = 0; t < 6; t++) {
 	otom[t] = 0;

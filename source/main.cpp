@@ -4588,23 +4588,23 @@ if (atype[t]==133){msoubi=4;}
 // Level selection menu on 3DS
 	    if (CheckDownKey(KEY_INPUT_LEFT)){
 			levelselx = (levelselx==0)?3:levelselx-1;
-			ot(oto[1]);
+			ot(oto[14]);
 	    }
 		if (CheckDownKey(KEY_INPUT_RIGHT)){
 			levelselx = (levelselx+1) % 4; 
-			ot(oto[1]);
+			ot(oto[14]);
 	    }
 		if (CheckDownKey(KEY_INPUT_DOWN)){
 			levelsely = (levelsely+1) % 3;
-			ot(oto[1]);
+			ot(oto[14]);
 	    }
 		if (CheckDownKey(KEY_INPUT_UP)){
 			levelsely = (levelsely==0)?2:levelsely-1;
-			ot(oto[1]);
+			ot(oto[14]);
 		}
 
 // Cheat code - unlock all levels
-	    if (CheckHitKey(KEY_INPUT_F1) && CheckHitKey(KEY_INPUT_8) && CheckHitKey(KEY_INPUT_9)){
+	    if (CheckHitKey(KEY_INPUT_F1) && CheckHitKey(KEY_INPUT_8) && CheckHitKey(KEY_INPUT_9) && cheat == 0){
 			cheat = 1;
 			ot(oto[15]);
 		}
