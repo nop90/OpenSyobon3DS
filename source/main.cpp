@@ -121,19 +121,18 @@ void rpaint()
 				     xx[1] / 100 + fmb,
 				     GetColor(255, 255,
 					      255),
-				     "ゲームクリアー");
+				     "Clear Play"/*"ゲームクリアー"*/);
 		if (ntype[t] == 102)
 		    DrawFormatString(xx[0] / 100 + fma,
 				     xx[1] / 100 + fmb,
 				     GetColor(255, 255,
 					      255),
-				     "プレイしてくれてありがとー");
+				     "Thanks for playing"/*"プレイしてくれてありがとー"*/);
 
 	    }
 	}			//t
 
 //グラ
-
 	for (t = 0; t < emax; t++) {
 	    xx[0] = ea[t] - fx;
 	    xx[1] = eb[t] - fy;
@@ -492,9 +491,9 @@ void rpaint()
 				  xx[0] / 100, xx[1] / 100);
 		    }
 
-		    if (ttype[t] == 112 || (ttype[t] == 104
-			&& txtype[t] == 0) || (ttype[t] == 115
-			&& txtype[t] == 1)) {
+		    if (ttype[t] == 112 
+			|| (ttype[t] == 104 && txtype[t] == 0) 	
+			|| (ttype[t] == 115 && txtype[t] == 1)) {
 			xx[6] = 1 + xx[9];
 			drawimage(grap[xx[6]][1],
 				  xx[0] / 100, xx[1] / 100);
@@ -1039,10 +1038,10 @@ void rpaint()
 		    xx[6] = (ab[t] - fy - 800) / 100;
 		}
 
-		//ChangeFontType(DX_FONTTYPE_EDGE);
+		ChangeFontType(DX_FONTTYPE_EDGE);
 		setc1();
 		str(xs[0], xx[5], xx[6]);
-		//ChangeFontType(DX_FONTTYPE_NORMAL);
+		ChangeFontType(DX_FONTTYPE_NORMAL);
 
 	    }			//amsgtm
 	}			//amax
