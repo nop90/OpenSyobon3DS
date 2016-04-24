@@ -1,4 +1,5 @@
 #include "os3ds.h"
+#include <sys/stat.h>
 
 
 #include "Roboto_Regular_ttf.h"
@@ -15,6 +16,11 @@ int os3ds_Init()
 {
     sf2d_init();
 	sf2d_set_3D(false);
+    romfsInit();
+
+    // In case game dir doesn't exist
+    mkdir("/3ds", 0777);
+    mkdir("/3ds/OpenSyobon3DS", 0777);
 	
 	sftd_init();
 

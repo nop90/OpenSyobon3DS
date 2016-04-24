@@ -49,8 +49,8 @@ void* bufferizeFile(const char* filename, u32* size, bool binary, bool linear)
 {
 	FILE* file;
 	
-	if(!binary)file = openFile(filename, "r+");
-	else file = openFile(filename, "rb+");
+	if(!binary)file = openFile(filename, "r");
+	else file = openFile(filename, "rb");
 	
 	if(!file)return NULL;
 	
