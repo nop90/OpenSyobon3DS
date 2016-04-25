@@ -45,6 +45,11 @@
 #define DMIX_MAX_VOLUME 0xff
 #define DX_PLAYTYPE_BACK 0
 
+// FONT
+#define DX_FONTTYPE_EDGE 0
+#define DX_FONTTYPE_NORMAL 0
+
+
 typedef struct  {
    sf2d_texture * texture;
    int   x,y,width,height;

@@ -15,6 +15,7 @@ void deinit();
 int main(void)
 {
 //    parseArgs(argc, argv);
+
 	sound = true;
 
     os3ds_Init();
@@ -2436,10 +2437,12 @@ if (mtm==250)end();
 			    if (txtype[t] == 1) {
 				for (t = 0; t < amax; t++) {
 				    if (atype[t] == 87 || atype[t] == 88) {
-					if (axtype[t] == 105) {
-					    axtype[t]
-						= 110;
-					}
+						if (axtype[t] == 105) { //nop90: Trying to fix the swith on level 4 - this sould enlarge the first line of fireballs ... 
+							axtype[t]
+							= 110;
+						} else if (axtype[t] == 110) { //nop90: ... and this one should shrink the second one
+							axtype[t] = 105;
+						}
 				    }
 				}
 				bxtype[3] = 105;
@@ -4867,13 +4870,14 @@ int rnd(int Rand)
 //終了
 void deinit()
 {
+/*
     setc0();
 	sf2d_start_frame(GFX_TOP, GFX_LEFT);
     FillScreen();
     DrawString(200, 200, "EXITING...", GetColor(255, 255, 255));
 	sf2d_end_frame();
     sf2d_swapbuffers();
-
+*/
 //SURFACES
     for (t = 0; t < 51; t++)
 		sf2d_free_texture(mgrap[t]);

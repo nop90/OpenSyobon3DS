@@ -245,7 +245,7 @@ anx[3]=30;any[3]=44;
     oto[13] = createSFX("/syobon/SE/Pswitch.raw",SOUND_FORMAT_16BIT);
     oto[14] = createSFX("/syobon/SE/jumpBlock.raw",SOUND_FORMAT_16BIT);
     oto[15] = createSFX("/syobon/SE/hintBlock.raw",SOUND_FORMAT_16BIT);
-    oto[16] = createSFX("/syobon/SE/4-clear.raw",SOUND_FORMAT_16BIT);
+    oto[16] = createSFX("/syobon/SE/4clear.raw",SOUND_FORMAT_16BIT);
     oto[17] = createSFX("/syobon/SE/allclear.raw",SOUND_FORMAT_16BIT);
     oto[18] = createSFX("/syobon/SE/tekifire.raw",SOUND_FORMAT_16BIT);
 
