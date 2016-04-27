@@ -13,13 +13,17 @@ extern int ne[41], nf[41];
 void loadg(void)
 {
 
-    for (t = 0; t < 51; t++) {
-	mgrap[t] = 0;
-    }
+    for (t = 0; t < 51; t++)
+		mgrap[t] = 0;
     for (int i = 0; i < 161; i++)
 	for (int j = 0; j < 8; j++)
 	    grap[i][j] = NULL;
 
+    for (t = 0; t < 6; t++)
+		otom[t] = 0;
+
+    for (t = 0; t < 19; t++)
+		oto[t] = 0;
 
 
 //画像読み込み
@@ -28,36 +32,38 @@ void loadg(void)
 //SetTransColor( 9*16+9 , 255 , 255 ) ;
 
 //プレイヤー
-    mgrap[0] = LoadGraph("/syobon/res/player.PNG");
+    mgrap[0] = LoadGraph("romfs:/res/player.png");
 	sf2d_texture_set_params(mgrap[0], GPU_TEXTURE_MAG_FILTER(GPU_LINEAR) | GPU_TEXTURE_MIN_FILTER(GPU_LINEAR)); 
 //ブロック
-    mgrap[1] = LoadGraph("/syobon/res/brock.PNG");
+    mgrap[1] = LoadGraph("romfs:/res/brock.png");
 	sf2d_texture_set_params(mgrap[1], GPU_TEXTURE_MAG_FILTER(GPU_LINEAR) | GPU_TEXTURE_MIN_FILTER(GPU_LINEAR)); 
 //アイテム
-    mgrap[2] = LoadGraph("/syobon/res/item.PNG");
+    mgrap[2] = LoadGraph("romfs:/res/item.png");
 	sf2d_texture_set_params(mgrap[2], GPU_TEXTURE_MAG_FILTER(GPU_LINEAR) | GPU_TEXTURE_MIN_FILTER(GPU_LINEAR)); 
 //敵
-    mgrap[3] = LoadGraph("/syobon/res/teki.PNG");
+    mgrap[3] = LoadGraph("romfs:/res/teki.png");
 	sf2d_texture_set_params(mgrap[3], GPU_TEXTURE_MAG_FILTER(GPU_LINEAR) | GPU_TEXTURE_MIN_FILTER(GPU_LINEAR)); 
 //背景
-    mgrap[4] = LoadGraph("/syobon/res/haikei.PNG");
+    mgrap[4] = LoadGraph("romfs:/res/haikei.png");
 	sf2d_texture_set_params(mgrap[4], GPU_TEXTURE_MAG_FILTER(GPU_LINEAR) | GPU_TEXTURE_MIN_FILTER(GPU_LINEAR)); 
 //ブロック2
-    mgrap[5] = LoadGraph("/syobon/res/brock2.PNG");
+    mgrap[5] = LoadGraph("romfs:/res/brock2.png");
 	sf2d_texture_set_params(mgrap[5], GPU_TEXTURE_MAG_FILTER(GPU_LINEAR) | GPU_TEXTURE_MIN_FILTER(GPU_LINEAR)); 
 //おまけ
-    mgrap[6] = LoadGraph("/syobon/res/omake.PNG");
+    mgrap[6] = LoadGraph("romfs:/res/omake.png");
 	sf2d_texture_set_params(mgrap[6], GPU_TEXTURE_MAG_FILTER(GPU_LINEAR) | GPU_TEXTURE_MIN_FILTER(GPU_LINEAR)); 
 //おまけ2
-   mgrap[7] = LoadGraph("/syobon/res/omake2.PNG");
+   mgrap[7] = LoadGraph("romfs:/res/omake2.png");
 	sf2d_texture_set_params(mgrap[7], GPU_TEXTURE_MAG_FILTER(GPU_LINEAR) | GPU_TEXTURE_MIN_FILTER(GPU_LINEAR)); 
 //タイトル
-    mgrap[30] = LoadGraph("/syobon/res/syobon3.PNG");
+    mgrap[30] = LoadGraph("romfs:/res/syobon3.png");
 	sf2d_texture_set_params(mgrap[30], GPU_TEXTURE_MAG_FILTER(GPU_LINEAR) | GPU_TEXTURE_MIN_FILTER(GPU_LINEAR)); 
 // level icons
-   mgrap[8] = LoadGraph("/syobon/res/levels.PNG");
+   mgrap[8] = LoadGraph("romfs:/res/levels.png");
 //Background
-   mgrap[9] = LoadGraph("/syobon/res/background.PNG");
+   mgrap[9] = LoadGraph("romfs:/res/background.png");
+//frame
+   mgrap[10] = LoadGraph("romfs:/res/frame.png");
 
 //プレイヤー読み込み
     grap[40][0] = DerivationGraph(0, 0, 30, 36, mgrap[0]);
@@ -222,32 +228,32 @@ anx[3]=30;any[3]=44;
 
 
 
-    otom[1] = createSFX("/syobon/BGM/field.raw",SOUND_FORMAT_16BIT); 
-    otom[2] = createSFX("/syobon/BGM/dungeon.raw",SOUND_FORMAT_16BIT); 
-    otom[3] = createSFX("/syobon/BGM/star4.raw",SOUND_FORMAT_16BIT); 
-    otom[4] = createSFX("/syobon/BGM/castle.raw",SOUND_FORMAT_16BIT);
-    otom[5] = createSFX("/syobon/BGM/puyo.raw",SOUND_FORMAT_16BIT); 
+    otom[1] = createSFX("romfs:/BGM/field.raw",SOUND_FORMAT_16BIT); 
+    otom[2] = createSFX("romfs:/BGM/dungeon.raw",SOUND_FORMAT_16BIT); 
+    otom[3] = createSFX("romfs:/BGM/star4.raw",SOUND_FORMAT_16BIT); 
+    otom[4] = createSFX("romfs:/BGM/castle.raw",SOUND_FORMAT_16BIT);
+    otom[5] = createSFX("romfs:/BGM/puyo.raw",SOUND_FORMAT_16BIT); 
 
-// //otom[6]=LoadMusicMem( "/syobon/BGM/last.raw",SOUND_FORMAT_16BIT);
+// //otom[6]=LoadMusicMem( "romfs:/BGM/last.raw",SOUND_FORMAT_16BIT);
 
-    oto[1] = createSFX("/syobon/SE/jump.raw",SOUND_FORMAT_16BIT);
-// //oto[2] = LoadSoundMem("/syobon/SE/brockcoin.raw",SOUND_FORMAT_16BIT);
-    oto[3] = createSFX("/syobon/SE/brockbreak.raw",SOUND_FORMAT_16BIT);
-    oto[4] = createSFX("/syobon/SE/coin.raw",SOUND_FORMAT_16BIT);
-    oto[5] = createSFX("/syobon/SE/humi.raw",SOUND_FORMAT_16BIT);
-    oto[6] = createSFX("/syobon/SE/koura.raw",SOUND_FORMAT_16BIT);
-    oto[7] = createSFX("/syobon/SE/dokan.raw",SOUND_FORMAT_16BIT);
-    oto[8] = createSFX("/syobon/SE/brockkinoko.raw",SOUND_FORMAT_16BIT);
-    oto[9] = createSFX("/syobon/SE/powerup.raw",SOUND_FORMAT_16BIT);
-    oto[10] = createSFX("/syobon/SE/kirra.raw",SOUND_FORMAT_16BIT);
-    oto[11] = createSFX("/syobon/SE/goal.raw",SOUND_FORMAT_16BIT);
-    oto[12] = createSFX("/syobon/SE/death.raw",SOUND_FORMAT_16BIT);
-    oto[13] = createSFX("/syobon/SE/Pswitch.raw",SOUND_FORMAT_16BIT);
-    oto[14] = createSFX("/syobon/SE/jumpBlock.raw",SOUND_FORMAT_16BIT);
-    oto[15] = createSFX("/syobon/SE/hintBlock.raw",SOUND_FORMAT_16BIT);
-    oto[16] = createSFX("/syobon/SE/4clear.raw",SOUND_FORMAT_16BIT);
-    oto[17] = createSFX("/syobon/SE/allclear.raw",SOUND_FORMAT_16BIT);
-    oto[18] = createSFX("/syobon/SE/tekifire.raw",SOUND_FORMAT_16BIT);
+    oto[1] = createSFX("romfs:/SE/jump.raw",SOUND_FORMAT_16BIT);
+// //oto[2] = LoadSoundMem("romfs:/SE/brockcoin.raw",SOUND_FORMAT_16BIT);
+    oto[3] = createSFX("romfs:/SE/brockbreak.raw",SOUND_FORMAT_16BIT);
+    oto[4] = createSFX("romfs:/SE/coin.raw",SOUND_FORMAT_16BIT);
+    oto[5] = createSFX("romfs:/SE/humi.raw",SOUND_FORMAT_16BIT);
+    oto[6] = createSFX("romfs:/SE/koura.raw",SOUND_FORMAT_16BIT);
+    oto[7] = createSFX("romfs:/SE/dokan.raw",SOUND_FORMAT_16BIT);
+    oto[8] = createSFX("romfs:/SE/brockkinoko.raw",SOUND_FORMAT_16BIT);
+    oto[9] = createSFX("romfs:/SE/powerup.raw",SOUND_FORMAT_16BIT);
+    oto[10] = createSFX("romfs:/SE/kirra.raw",SOUND_FORMAT_16BIT);
+    oto[11] = createSFX("romfs:/SE/goal.raw",SOUND_FORMAT_16BIT);
+    oto[12] = createSFX("romfs:/SE/death.raw",SOUND_FORMAT_16BIT);
+    oto[13] = createSFX("romfs:/SE/Pswitch.raw",SOUND_FORMAT_16BIT);
+    oto[14] = createSFX("romfs:/SE/jumpBlock.raw",SOUND_FORMAT_16BIT);
+    oto[15] = createSFX("romfs:/SE/hintBlock.raw",SOUND_FORMAT_16BIT);
+    oto[16] = createSFX("romfs:/SE/4clear.raw",SOUND_FORMAT_16BIT);
+    oto[17] = createSFX("romfs:/SE/allclear.raw",SOUND_FORMAT_16BIT);
+    oto[18] = createSFX("romfs:/SE/tekifire.raw",SOUND_FORMAT_16BIT);
 
 
 

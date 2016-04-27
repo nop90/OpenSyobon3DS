@@ -5,6 +5,10 @@ BasicInfo:
   ContentType             : Application
   Logo                    : Nintendo # Nintendo / Licensed / Distributed / iQue / iQueForSystem
 
+RomFs:
+  # Specifies the root path of the read only file system to include in the ROM.
+  RootPath                : "romfs"
+  
 TitleInfo:
   UniqueId                : 0x9971
   Category                : Application

@@ -29,7 +29,7 @@ int main(void)
 
 	int tempread=0;
 	FILE* f;
-	f = fopen("/syobon/OpenSyobon3DS.sav", "r");
+	f = fopen("/3ds/OpenSyobon3DS/OpenSyobon3DS.sav", "r");
 	if (f!=NULL) {
 		if (fscanf(f,"%d",&tempread) == 1)
 			if (tempread >0 && tempread <9) unlockedlevel = tempread;
@@ -82,7 +82,7 @@ void rpaint()
 
     if (mainZ == 1 && zxon >= 1) {
 
-	SetFontSize(20);
+	SetFontSize(26);
 
 //背景
 	for (t = 0; t < nmax; t++) {
@@ -1149,21 +1149,21 @@ void rpaint()
 	DrawBG(0, 0, mgrap[9]);
 
 	SetFontSize(32);
-	DrawFormatString(270, 80, GetColor(255, 255, 0), " World %d - Stage %d",
+	DrawFormatString(270-180, 80, GetColor(255, 255, 0), " World %d - Stage %d",
 			 sta, stb);
 
 	SetFontSize(24);
 	SetFontThickness(4);
 
-	drawimage(grap[0][0], 370, 170);
-	DrawFormatString(410, 170, GetColor(255, 255, 255), " x %d",
+	drawimage(grap[0][0], 370-180, 170);
+	DrawFormatString(410-180, 170, GetColor(255, 255, 255), " x %d",
 			 nokori);
 
 	if (cheat==0) 
 		if (unlockedlevel < (sta-1)*4+stb-1) {;
 			unlockedlevel = (sta-1)*4+stb-1;
 			FILE *f;
-			f = fopen("/syobon/OpenSyobon3DS.sav", "w+");
+			f = fopen("/3ds/OpenSyobon3DS/OpenSyobon3DS.sav", "w+");
 			fprintf(f, "%d", unlockedlevel);
 			fclose(f);
 
@@ -1176,17 +1176,17 @@ void rpaint()
 	setcolor(160, 180, 250);
 	FillScreen();
 
-	drawimage(mgrap[30], 400 - 380 / 2, 40);
+	drawimage(mgrap[30], 400-160 - 400 / 2, 40);
 
 // 3DS logo	
-	drawimage(grap[40][4], 540, 90);
+	drawimage(grap[40][4], 520-160, 90);
 
 	drawimage(grap[0][4], 12 * 30, 10 * 29 - 12);
 	drawimage(grap[1][4], 6 * 30, 12 * 29 - 12);
 
 //プレイヤー
 	drawimage(grap[0][0], 2 * 30, 12 * 29 - 12 - 6);
-	for (t = 0; t <= 27; t++) {
+	for (t = 0; t <= 17; t++) {
 	    drawimage(grap[5][1], 29 * t, 13 * 29 - 12);
 	    drawimage(grap[6][1], 29 * t, 14 * 29 - 12);
 	}
@@ -1194,9 +1194,16 @@ void rpaint()
 	setcolor(0, 0, 0);
 	//str("Enterキーを押せ!!", 240 - 8 * 20 / 2, 240);
 	SetFontSize(20);
-	str("Press Start or A!", 400 - 7 * 20 / 2, 220);
+	str("Press Start or A!", 320 -80 - 7 * 20 / 2, 220);
 
     }
+
+	if (mainZ != 10) {
+//		sf2d_draw_rectangle(0, 0, 80, 240, 0xff000000);
+//		sf2d_draw_rectangle(320, 0, 80, 240, 0xff000000);
+		DrawBG(0, 0,mgrap[10]);
+	}
+	
 	sf2d_end_frame();
 
 // 3DS bottom screen
@@ -1209,7 +1216,7 @@ void rpaint()
 
 //Stage selection menu
 		SetFontSize(32);
-		DrawFormatString(210, -50, GetColor(255, 255, 0), "Select  the  level",
+		DrawFormatString(210-160, -50, GetColor(255, 255, 0), "Select  the  level",
 			 sta, stb);
 
 		setcolor(255, 255, 255);
@@ -1242,12 +1249,12 @@ void rpaint()
 		SetFontSize(24);
 		SetFontThickness(4);
 
-		drawimage(grap[0][0], 20, -40);
-		DrawFormatString(60, -40, GetColor(255, 255, 255), " x %d",
+		drawimage(grap[0][0], 20-160, -40);
+		DrawFormatString(60-160, -40, GetColor(255, 255, 255), " x %d",
 			 nokori);
 
 	SetFontSize(32);
-	DrawFormatString(380, -40, GetColor(255, 255, 0), " World %d - Stage %d",
+	DrawFormatString(380-160, -40, GetColor(255, 255, 0), " World %d - Stage %d",
 			 sta, stb);
 	}
 
@@ -4906,7 +4913,8 @@ void deinit()
 //    Mix_Quit();
 //    SDL_Quit();
 
-    sftd_fini();
+    romfsExit();
+	sftd_fini();
 	sf2d_fini();
 
 }
@@ -4935,7 +4943,7 @@ void setc1()
 void drawpixel(int a, int b)
 {
 //    pixelColor(screen, a, b, gfxcolor);
-	sf2d_draw_line(a/scale-0.2, b/scale-0.2+y_off, (float)a/scale+0.2, (float)a/scale+0.2+y_off, 1, gfxcolor);
+	sf2d_draw_line(80 + a/scale-0.2, b/scale-0.2+y_off, 80 + (float)a/scale+0.2, (float)a/scale+0.2+y_off, 1, gfxcolor);
 
 }
 
@@ -4943,17 +4951,17 @@ void drawpixel(int a, int b)
 void drawline(int a, int b, int c, int d)
 {
     //lineColor(screen, a, b, c, d, gfxcolor);
-	sf2d_draw_line((int)(a/scale), (int)(b/scale)+y_off, (int)(c/scale)+0.1, (int)(d/scale)+0.1+y_off, 1,gfxcolor);
+	sf2d_draw_line(80 + (int)(a/scale), (int)(b/scale)+y_off, 80 + (int)(c/scale)+0.1, (int)(d/scale)+0.1+y_off, 1,gfxcolor);
 }
 
 //四角形(塗り無し)
 void drawrect(int a, int b, int c, int d)
 {
 //    rectangleColor(screen, a, b, a + c - 1, b + d - 1, gfxcolor);
-	sf2d_draw_line((int)(a/scale), (int)(b/scale)+y_off, (int)(a/scale)+0.1, (int)((b + d - 1)/scale)+0.1+y_off, 1,gfxcolor);
-	sf2d_draw_line((int)((a + c - 1)/scale), (int)(b/scale)+y_off, (int)((a + c - 1)/scale)+0.1, (int)((b + d - 1)/scale)+0.1+y_off, 1,gfxcolor);
-	sf2d_draw_line((int)(a/scale), (int)(b/scale)+y_off, (int)((a + c - 1)/scale)+0.1, (int)(b/scale)+0.1+y_off, 1,gfxcolor);
-	sf2d_draw_line((int)(a/scale), (int)((b + d - 1)/scale)+y_off, (int)((a + c - 1)/scale)+0.1, (int)((b + d - 1)/scale)+0.1+y_off, 1,gfxcolor);
+	sf2d_draw_line(80 + (int)(a/scale), (int)(b/scale)+y_off, 80 + (int)(a/scale)+0.1, (int)((b + d - 1)/scale)+0.1+y_off, 1,gfxcolor);
+	sf2d_draw_line(80 + (int)((a + c - 1)/scale), (int)(b/scale)+y_off, 80 + (int)((a + c - 1)/scale)+0.1, (int)((b + d - 1)/scale)+0.1+y_off, 1,gfxcolor);
+	sf2d_draw_line(80 + (int)(a/scale), (int)(b/scale)+y_off, 80 + (int)((a + c - 1)/scale)+0.1, (int)(b/scale)+0.1+y_off, 1,gfxcolor);
+	sf2d_draw_line(80 + (int)(a/scale), (int)((b + d - 1)/scale)+y_off, 80 + (int)((a + c - 1)/scale)+0.1, (int)((b + d - 1)/scale)+0.1+y_off, 1,gfxcolor);
 
 }
 
@@ -4961,7 +4969,7 @@ void drawrect(int a, int b, int c, int d)
 void fillrect(int a, int b, int c, int d)
 {
     //boxColor(screen, a, b, a + c - 1, b + d - 1, gfxcolor);
-	sf2d_draw_rectangle((int)(a/scale), (int)(b/scale)+y_off, (int)(c/scale), (int)(d/scale), gfxcolor);
+	sf2d_draw_rectangle(80 + (int)(a/scale), (int)(b/scale)+y_off, (int)(c/scale), (int)(d/scale), gfxcolor);
 }
 
 //円(塗り無し)
@@ -4975,7 +4983,7 @@ void drawarc(int a, int b, int c, int d)
 void fillarc(int a, int b, int c, int d)
 {
 //    filledEllipseColor(screen, a, b, c, d, gfxcolor);
-		sf2d_draw_fill_circle(a/scale, b/scale+y_off, c/scale, gfxcolor);
+		sf2d_draw_fill_circle(80 + a/scale, b/scale+y_off, c/scale, gfxcolor);
 }
 
 void FillScreen()
@@ -10663,11 +10671,11 @@ void ttmsg()
     xx[2] = 4000 / 100;
     if (tmsgtype == 1 || tmsgtype == 2) {
 	setc0();
-//	fillrect(xx[1], xx[2], 360, tmsgy / 100);
-	fillrect(xx[1], xx[2], fxmax / 100 - xx[1]*2, tmsgy / 100);
+	fillrect(xx[1], xx[2], 360, tmsgy / 100);
+//	fillrect(xx[1], xx[2], fxmax / 100 - xx[1]*2, tmsgy / 100);
 	setc1();
-//	drawrect(xx[1], xx[2], 360, tmsgy / 100);
-	drawrect(xx[1], xx[2], fxmax / 100 - xx[1]*2, tmsgy / 100);
+	drawrect(xx[1], xx[2], 360, tmsgy / 100);
+//	drawrect(xx[1], xx[2], fxmax / 100 - xx[1]*2, tmsgy / 100);
     }
     if (tmsgtype == 2) {
 //フォント
@@ -10693,14 +10701,14 @@ void ttmsg()
 
 	if (tmsg == 2) {
 		txmsg("[?] required :)", 3);
-		txmsg("          (^Д^) - m9", 6);
+		txmsg("          (^A^) - m9", 6);
 	    //txmsg("            ？が必要です ", 3);
 	    //txmsg("                         m9(^Д^)", 6);
 	}
 
 	if (tmsg == 3) {
 		txmsg("Money money, dirty money..", 3);
-		txmsg("                             (・ω・) -Noshi", 6);
+		txmsg("                             (.w.) -Noshi", 6);
 	    //txmsg("   別にコインに意味ないけどね ", 3);
 	    //txmsg("                      (・ω・ )ﾉｼ", 6);
 	}

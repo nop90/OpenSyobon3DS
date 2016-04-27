@@ -78,7 +78,7 @@ void DrawFormatString(int a, int b, u32 color, const char *str, ...);
 #define KEY_INPUT_F1 KEY_Y
 #define KEY_INPUT_O KEY_X
 #define KEY_INPUT_Z KEY_A
-#define KEY_INPUT_RETURN KEY_START
+#define KEY_INPUT_RETURN KEY_START 
 #define KEY_INPUT_SPACE KEY_B
 
 #define KEY_INPUT_1 0 //SDLK_0
