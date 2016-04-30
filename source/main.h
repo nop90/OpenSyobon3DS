@@ -62,8 +62,8 @@ int rnd(int Rand);
 #define end() exit(0)
 
 //描画
-u32 color;
-u32 gfxcolor;
+int color;
+int gfxcolor;
 void setfont(int a);
 void setcolor(int red, int green, int blue);
 void setc0();

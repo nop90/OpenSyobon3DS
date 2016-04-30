@@ -66,8 +66,8 @@ extern u32 *screen;
 
 void SetFontSize(byte size);
 void ChangeFontType(byte type);
-void DrawString(int a, int b, const char *x, u32 c);
-void DrawFormatString(int a, int b, u32 color, const char *str, ...);
+void DrawString(int a, int b, const char *x, int c);
+void DrawFormatString(int a, int b, int color, const char *str, ...);
 
 //Key Aliases
 #define KEY_INPUT_ESCAPE KEY_SELECT
@@ -75,8 +75,8 @@ void DrawFormatString(int a, int b, u32 color, const char *str, ...);
 #define KEY_INPUT_RIGHT KEY_RIGHT
 #define KEY_INPUT_DOWN KEY_DOWN
 #define KEY_INPUT_UP KEY_UP
-#define KEY_INPUT_F1 KEY_Y
-#define KEY_INPUT_O KEY_X
+#define KEY_INPUT_F1 KEY_START //KEY_Y
+#define KEY_INPUT_O KEY_SELECT //KEY_X
 #define KEY_INPUT_Z KEY_A
 #define KEY_INPUT_RETURN KEY_START 
 #define KEY_INPUT_SPACE KEY_B

@@ -41,7 +41,7 @@ int main(void)
 
 //ループ
 //for (maint=0;maint<=2;maint++){
-    while (ProcessMessage() == 0 && CheckHitKey(KEY_INPUT_ESCAPE) == 0) {
+    while (ProcessMessage() == 0 && !(CheckHitKey(KEY_INPUT_ESCAPE) && CheckHitKey(KEY_INPUT_RETURN))) {
 		UpdateKeys();
 		maint = 0;
 		Mainprogram();
@@ -1194,7 +1194,7 @@ void rpaint()
 	setcolor(0, 0, 0);
 	//str("Enterキーを押せ!!", 240 - 8 * 20 / 2, 240);
 	SetFontSize(20);
-	str("Press Start or A!", 320 -80 - 7 * 20 / 2, 220);
+	str("Press A to start!", 320 -80 - 7 * 20 / 2, 220);
 
     }
 
@@ -4622,8 +4622,8 @@ if (atype[t]==133){msoubi=4;}
 	    xx[0] = 1;
 	    over = 1;
 	}
-//if (CheckHitKeyAll() == 0){end();}
-	if ((CheckHitKey(KEY_INPUT_RETURN) == 1) || (CheckHitKey(KEY_INPUT_Z) == 1)) {
+//	if ((CheckHitKey(KEY_INPUT_RETURN) == 1) || (CheckHitKey(KEY_INPUT_Z) == 1)) {
+	if (CheckHitKey(KEY_INPUT_Z) == 1) {
 		int level = levelselx + levelsely *4;
 
 		if ((level<=unlockedlevel) || cheat) {
@@ -4877,14 +4877,6 @@ int rnd(int Rand)
 //終了
 void deinit()
 {
-/*
-    setc0();
-	sf2d_start_frame(GFX_TOP, GFX_LEFT);
-    FillScreen();
-    DrawString(200, 200, "EXITING...", GetColor(255, 255, 255));
-	sf2d_end_frame();
-    sf2d_swapbuffers();
-*/
 //SURFACES
     for (t = 0; t < 51; t++)
 		sf2d_free_texture(mgrap[t]);
@@ -4900,19 +4892,9 @@ void deinit()
 //--
 
 //Font
-//    for (int i = 0; i < FONT_MAX; i++)
-//	TTF_CloseFont(font[i]);
 	sftd_free_font(font);
 	
-//Joystick
-//    SDL_JoystickClose(joystick);
-
-//Close libraries
-//    IMG_Quit();
-//    TTF_Quit();
-//    Mix_Quit();
-//    SDL_Quit();
-
+///Close libraries
     romfsExit();
 	sftd_fini();
 	sf2d_fini();
@@ -4943,7 +4925,7 @@ void setc1()
 void drawpixel(int a, int b)
 {
 //    pixelColor(screen, a, b, gfxcolor);
-	sf2d_draw_line(80 + a/scale-0.2, b/scale-0.2+y_off, 80 + (float)a/scale+0.2, (float)a/scale+0.2+y_off, 1, gfxcolor);
+	sf2d_draw_line(80 + a/scale-0.2, b/scale-0.2+y_off, 80 + (float)a/scale+0.2, (float)b/scale+0.2+y_off, 1, gfxcolor);
 
 }
 

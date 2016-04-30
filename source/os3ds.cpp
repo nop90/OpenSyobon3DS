@@ -51,7 +51,7 @@ void ChangeFontType(byte type)
     fontType = type;
 }
 
-void DrawString(int a, int b, const char *x, u32 c)
+void DrawString(int a, int b, const char *x, int c)
 {
 	int shadow;
 	
@@ -71,7 +71,7 @@ void DrawString(int a, int b, const char *x, u32 c)
 
 }
 
-void DrawFormatString(int a, int b, u32 color, const char *str, ...)
+void DrawFormatString(int a, int b, int color, const char *str, ...)
 {
     va_list args;
     char *newstr = new char[strlen(str) + 16];
