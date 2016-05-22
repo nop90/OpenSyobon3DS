@@ -3,6 +3,10 @@
 extern int sound;
 extern sftd_font *font;
 
+extern SFX_s* currentMusic;
+extern int musicPaused;
+
+
 char levelselx = 0; 
 char levelsely = 0;
 char unlockedlevel=0;
@@ -1137,7 +1141,7 @@ void rpaint()
 	    240 - 16 * 20 / 2, xx[28] / 100);
 	str("Chikuwa"/*"ちく"*/, 240 - 2 * 20 / 2, xx[29] / 100);
 
-	str("Thank you for playing!"/*"プレイしていただき　ありがとうございました〜"*/, 240 - 22 * 20 / 2, xx[30] / 100);
+	str("Thank you for playing!  - The End -"/*"プレイしていただき　ありがとうございました〜"*/, 240 - 22 * 20 / 2, xx[30] / 100);
     }
     if (mainZ == 10) {
 
@@ -1173,6 +1177,8 @@ void rpaint()
 //タイトル
     if (mainZ == 100) {
 
+	if (currentMusic) Mix_HaltMusic();
+
 	setcolor(160, 180, 250);
 	FillScreen();
 
@@ -1199,8 +1205,6 @@ void rpaint()
     }
 
 	if (mainZ != 10) {
-//		sf2d_draw_rectangle(0, 0, 80, 240, 0xff000000);
-//		sf2d_draw_rectangle(320, 0, 80, 240, 0xff000000);
 		DrawBG(0, 0,mgrap[10]);
 	}
 	

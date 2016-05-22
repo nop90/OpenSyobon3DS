@@ -8,6 +8,11 @@
 sftd_font *font;
 int sound;
 
+SFX_s* currentMusic;
+int musicPaused;
+
+
+
 //SDL_Joystick* joystick;
 
 //bool keysHeld[SDLK_LAST];
@@ -29,6 +34,8 @@ int os3ds_Init()
 
 	initSound();	
 	sound = true;
+	currentMusic = NULL;
+	musicPaused=0;
     
     return 0;
 }
@@ -91,7 +98,7 @@ void UpdateKeys()
 
 byte ProcessMessage()
 {
-    return aptMainLoop()?0:1 ;//ex;
+    return aptMainLoop()?0:1 ;
 }
 
 byte CheckHitKey(int key)
@@ -202,16 +209,20 @@ void PlaySoundMem(SFX_s* s, int l)
 void Mix_PlayMusic(SFX_s* s, int l)
 {
    if (s)
-	if(sound && s->used) playMSC(s);
+	if(sound && s->used) { 
+		currentMusic = s;
+		playMSC(s);
+	}
 }
 
 void StopSoundMem(SFX_s* s)
 {
-   stopSFX();
+	stopSFX();
 }
 
 void Mix_HaltMusic(void)
 {
-   stopMSC();
+	stopMSC();
+	currentMusic = NULL;
 }
 
