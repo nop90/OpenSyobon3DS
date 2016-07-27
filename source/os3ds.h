@@ -97,7 +97,9 @@ void UpdateKeys();
 byte ProcessMessage();
 byte CheckHitKey(int key);
 byte CheckDownKey(int key);
-byte WaitKey();
+int WaitKey();
+int getTouchX();
+int getTouchY();
 
 #define GetColor(r, g, b) RGBA8(r,g,b,0xff)
 

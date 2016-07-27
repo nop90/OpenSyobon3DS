@@ -12,6 +12,8 @@ char levelsely = 0;
 char unlockedlevel=0;
 char cheat = 0; 
 
+int oldTouch=0;
+
 void deinit();
 
 // プログラムは WinMain から始まります
@@ -28,9 +30,14 @@ int main(void)
     loadg();
 
 //フォント
-    SetFontSize(16);
+    SetFontSize(32);
 //SetFontThickness(4) ;
 
+	// The sftd libs caches chars bitmaps at the first use, but scaling them up causes som blurs, 
+	// so whe init it drawing a string with all chars at the bigget size we use 
+	sftd_draw_textf(font, 0, 0, RGBA8(255, 0, 0, 255), 32, "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890:-.'!?()\"end");
+    SetFontSize(16);
+	
 	int tempread=0;
 	FILE* f;
 	f = fopen("/3ds/OpenSyobon3DS/OpenSyobon3DS.sav", "r");
@@ -909,9 +916,9 @@ void rpaint()
 		xs[0] = "I hate lava..";
 		//xs[0] = "溶岩と合体したい……";
 
-	    setc0();
-	    str(xs[0], (ma + mnobia + 300) / 100 - 1, mb / 100 - 1);
-	    str(xs[0], (ma + mnobia + 300) / 100 + 1, mb / 100 + 1);
+//	    setc0();
+//	    str(xs[0], (ma + mnobia + 300) / 100 - 1, mb / 100 - 1);
+//	    str(xs[0], (ma + mnobia + 300) / 100 + 1, mb / 100 + 1);
 	    setc1();
 	    str(xs[0], (ma + mnobia + 300) / 100, mb / 100);
 
@@ -1257,9 +1264,23 @@ void rpaint()
 		DrawFormatString(60-160, -40, GetColor(255, 255, 255), " x %d",
 			 nokori);
 
-	SetFontSize(32);
-	DrawFormatString(380-160, -40, GetColor(255, 255, 0), " World %d - Stage %d",
+		SetFontSize(32);
+		DrawFormatString(380-160, -40, GetColor(255, 255, 0), " World %d - Stage %d",
 			 sta, stb);
+		
+		setcolor(255, 255, 255);
+		fillrect(80-160,90, 480, 80);
+		setcolor(128, 128, 255);
+		fillrect(84-160,94, 472, 72);
+
+		setcolor(255, 255, 255);
+		fillrect(80-160,240, 480, 80);
+		setcolor(128, 128, 255);
+		fillrect(84-160,244, 472, 72);
+
+		DrawFormatString(215-160, 110, GetColor(255, 255, 255), "R e t r y   l e v e l", sta, stb);
+		DrawFormatString(190-160, 260, GetColor(255, 255, 255), "B a c k   t o   m e n u ", sta, stb);
+
 	}
 
 	sf2d_end_frame();
@@ -1418,6 +1439,30 @@ void Mainprogram()
 		actaon[1] = 10;
 	}
 //if (( key & PAD_INPUT_UP) && keytm<=0){actaon[0]=-1;mmuki=0;}
+
+// Level retry/quit using touchscreen
+		if(CheckDownKey(KEY_TOUCH)){
+			if(!oldTouch){
+				oldTouch=1;
+				int tx,ty;
+				tx = getTouchX();
+				ty = getTouchY();
+				if (tx> 40 && tx <280) {
+					if (ty> 75 && ty <115) {
+						if (mhp >= 1)
+							mhp = 0;
+						if (stc >= 5) {
+							stc = 0;
+							stagepoint = 0;
+						}
+					} else if (ty> 150 && ty <190) {
+						mainZ = 100;
+						Mix_HaltMusic();
+					} 
+				}
+			} 
+		} else oldTouch=0;
+
 
 //xx[0]=200;
 //if (actaon[0]==-1){ma-=xx[0];}
@@ -4616,6 +4661,71 @@ if (atype[t]==133){msoubi=4;}
 			ot(oto[14]);
 		}
 
+// Level select/start using touchscreen
+		int touchSelX=-1;
+		int touchSelY=-1;
+		int touchStart=0;
+		if(CheckDownKey(KEY_TOUCH)){
+			if(!oldTouch){
+				oldTouch=1;
+				int tx,ty;
+				tx = getTouchX();
+				ty = getTouchY();
+				if (ty> 35 && ty <83) {
+					if (tx> 34 && tx <82) {
+						touchSelX=0;
+						touchSelY=0;
+						ot(oto[14]);
+					} else if (tx> 102 && tx <150) {
+						touchSelX=1;
+						touchSelY=0;
+						ot(oto[14]);
+					} else if (tx> 170 && tx <218) {
+						touchSelX=2;
+						touchSelY=0;
+						ot(oto[14]);
+					} else if (tx> 238 && tx <286) {
+						touchSelX=3;
+						touchSelY=0;
+						ot(oto[14]);
+					} 
+				} else if (ty> 105 && ty <153) {
+					if (tx> 34 && tx <82) {
+						touchSelX=0;
+						touchSelY=1;
+						ot(oto[14]);
+					} else if (tx> 102 && tx <150) {
+						touchSelX=1;
+						touchSelY=1;
+						ot(oto[14]);
+					} else if (tx> 170 && tx <218) {
+						touchSelX=2;
+						touchSelY=1;
+						ot(oto[14]);
+					} else if (tx> 238 && tx <286) {
+						touchSelX=3;
+						touchSelY=1;
+						ot(oto[14]);
+					}  
+				} else if (ty> 176 && ty <224) {
+					if (tx> 136 && tx <184) {
+						touchSelX=0;
+						touchSelY=2;
+						ot(oto[14]);
+					}  
+				}
+			} 
+		} else oldTouch=0;
+
+		if (touchSelX >=0) {
+			if (touchSelX == levelselx && touchSelY == levelsely) {
+				touchStart=1;
+			} else  {
+				levelselx = touchSelX;
+				levelsely = touchSelY;
+			}
+		}
+			
 // Cheat code - unlock all levels
 	    if (CheckHitKey(KEY_INPUT_F1) && CheckHitKey(KEY_INPUT_8) && CheckHitKey(KEY_INPUT_9) && cheat == 0){
 			cheat = 1;
@@ -4627,7 +4737,7 @@ if (atype[t]==133){msoubi=4;}
 	    over = 1;
 	}
 //	if ((CheckHitKey(KEY_INPUT_RETURN) == 1) || (CheckHitKey(KEY_INPUT_Z) == 1)) {
-	if (CheckHitKey(KEY_INPUT_Z) == 1) {
+	if (CheckHitKey(KEY_INPUT_Z) == 1 || touchStart) {
 		int level = levelselx + levelsely *4;
 
 		if ((level<=unlockedlevel) || cheat) {
@@ -4650,11 +4760,6 @@ if (atype[t]==133){msoubi=4;}
 			tyuukan = 0;
 		}
 	}
-
-//	if (xx[0] == 1) {
-
-// set level on 3DS		
-//	}
 
     }				//100
 
@@ -4928,7 +5033,6 @@ void setc1()
 //点
 void drawpixel(int a, int b)
 {
-//    pixelColor(screen, a, b, gfxcolor);
 	sf2d_draw_line(80 + a/scale-0.2, b/scale-0.2+y_off, 80 + (float)a/scale+0.2, (float)b/scale+0.2+y_off, 1, gfxcolor);
 
 }
@@ -4936,14 +5040,13 @@ void drawpixel(int a, int b)
 //線
 void drawline(int a, int b, int c, int d)
 {
-    //lineColor(screen, a, b, c, d, gfxcolor);
 	sf2d_draw_line(80 + (int)(a/scale), (int)(b/scale)+y_off, 80 + (int)(c/scale)+0.1, (int)(d/scale)+0.1+y_off, 1,gfxcolor);
 }
 
 //四角形(塗り無し)
 void drawrect(int a, int b, int c, int d)
 {
-//    rectangleColor(screen, a, b, a + c - 1, b + d - 1, gfxcolor);
+
 	sf2d_draw_line(80 + (int)(a/scale), (int)(b/scale)+y_off, 80 + (int)(a/scale)+0.1, (int)((b + d - 1)/scale)+0.1+y_off, 1,gfxcolor);
 	sf2d_draw_line(80 + (int)((a + c - 1)/scale), (int)(b/scale)+y_off, 80 + (int)((a + c - 1)/scale)+0.1, (int)((b + d - 1)/scale)+0.1+y_off, 1,gfxcolor);
 	sf2d_draw_line(80 + (int)(a/scale), (int)(b/scale)+y_off, 80 + (int)((a + c - 1)/scale)+0.1, (int)(b/scale)+0.1+y_off, 1,gfxcolor);
@@ -4954,7 +5057,6 @@ void drawrect(int a, int b, int c, int d)
 //四角形(塗り有り)
 void fillrect(int a, int b, int c, int d)
 {
-    //boxColor(screen, a, b, a + c - 1, b + d - 1, gfxcolor);
 	sf2d_draw_rectangle(80 + (int)(a/scale), (int)(b/scale)+y_off, (int)(c/scale), (int)(d/scale), gfxcolor);
 }
 
@@ -4974,7 +5076,6 @@ void fillarc(int a, int b, int c, int d)
 
 void FillScreen()
 {
-//    SDL_FillRect(screen, 0, color);
 	sf2d_draw_rectangle(0,0,400,240, color);
 }
 

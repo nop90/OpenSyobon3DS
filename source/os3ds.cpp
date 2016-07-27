@@ -63,6 +63,7 @@ void DrawString(int a, int b, const char *x, int c)
 	int shadow;
 	
 	shadow = (c==RGBA8(0x0, 0x0, 0x0, 0xff))?RGBA8(0xff, 0xff, 0xff, 0xff):RGBA8(0x0, 0x0, 0x0, 0xff);
+//	shadow = (c==RGBA8(0xff, 0xff, 0xff, 0xff))?RGBA8(0x0, 0x0, 0x0, 0xff):RGBA8(0xff, 0xff, 0xff, 0xff);
 
 
 	sftd_draw_text(font, 80 + a/scale-1, b/scale-1+y_off, shadow, fontsize/scale, x);
@@ -111,11 +112,23 @@ byte CheckDownKey(int key)
     return (keysDown()&key)?1:0;
 }
 
-byte WaitKey()
+int WaitKey()
 {
     while (!hidKeysDown()) hidScanInput();
 	
 	return hidKeysDown(); 	
+}
+
+int getTouchX(){
+	touchPosition pos;	
+	hidTouchRead(&pos);
+	return pos.px;
+}
+
+int getTouchY(){
+	touchPosition pos;	
+	hidTouchRead(&pos);
+	return pos.py;
 }
 
 void DrawBG(int a, int b, sf2d_texture * mx)
